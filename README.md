@@ -2,6 +2,10 @@
 
 Este proyecto implementa una estructura de datos de árbol con la capacidad de trabajar tanto con árboles generales como árboles binarios de búsqueda. La funcionalidad incluye la creación de nodos, la adición de nodos e hijos, varios tipos de recorrido y la verificación de las propiedades del árbol.
 
+> [!Note]
+> Puedes leer mas del codigo fuente en la documentacion externa [Ir a la documentación del árbol](docs/documentation.md)
+
+
 ---
 
 #### **Requisitos previos:**
