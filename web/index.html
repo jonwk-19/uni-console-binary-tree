@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Árbol con raíz & BST - Visualizador</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>🌳 Visualizador de Árboles</h1>
+      <p>JavaScript puro · Árbol con raíz · BST · Recorridos · Altura · ¿Es binario?</p>
+    </header>
+
+    <main class="app-main">
+      <!-- Panel de controles -->
+      <section class="panel panel-controls">
+        <h2>Controles</h2>
+
+        <div class="card">
+          <h3>1. Crear nodo raíz (árbol general)</h3>
+          <div class="form-row">
+            <label for="rootValue">Valor raíz</label>
+            <input type="text" id="rootValue" placeholder="Ej: A" />
+          </div>
+          <button id="btnCreateRoot" class="btn primary">Crear raíz</button>
+        </div>
+
+        <div class="card">
+          <h3>2. Agregar hijo a un nodo (árbol general)</h3>
+          <div class="form-row">
+            <label for="parentValue">Valor del nodo padre</label>
+            <input type="text" id="parentValue" placeholder="Ej: A" />
+          </div>
+          <div class="form-row">
+            <label for="childValue">Valor del nodo hijo</label>
+            <input type="text" id="childValue" placeholder="Ej: B" />
+          </div>
+          <button id="btnAddChild" class="btn secondary">Agregar hijo</button>
+        </div>
+
+        <div class="card">
+          <h3>3. Operaciones árbol general</h3>
+          <div class="button-grid">
+            <button id="btnShowTree" class="btn ghost">Mostrar árbol</button>
+            <button id="btnPreorder" class="btn ghost">Preorden</button>
+            <button id="btnInorder" class="btn ghost">Inorden</button>
+            <button id="btnPostorder" class="btn ghost">Postorden</button>
+            <button id="btnHeight" class="btn ghost">Altura</button>
+            <button id="btnIsBinary" class="btn ghost">¿Es binario?</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>4. Árbol Binario de Búsqueda (BST)</h3>
+          <p class="card-hint">
+            Ingresa números separados por coma o espacio. Se insertan en el orden dado usando
+            las reglas de un BST.
+          </p>
+          <div class="form-row">
+            <label for="bstValues">Valores a insertar en el BST</label>
+            <input
+              type="text"
+              id="bstValues"
+              placeholder="Ej: 4, 22, 9, 15, 1, 26, 18, 29, 12, 7"
+            />
+          </div>
+          <div class="button-grid">
+            <button id="btnBuildBST" class="btn secondary">Construir BST</button>
+            <button id="btnBSTPreorder" class="btn ghost">Preorden BST</button>
+            <button id="btnBSTInorder" class="btn ghost">Inorden BST</button>
+            <button id="btnBSTPostorder" class="btn ghost">Postorden BST</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Extras árbol general</h3>
+          <div class="button-grid">
+            <button id="btnStats" class="btn ghost">Estadísticas</button>
+            <button id="btnDemo" class="btn ghost">Cargar árbol de ejemplo</button>
+            <button id="btnReset" class="btn danger">Reiniciar árbol general</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel de salida -->
+      <section class="panel panel-output">
+        <h2>Salida</h2>
+
+        <div class="card">
+          <h3>Árbol general (modo texto)</h3>
+          <pre id="treeDisplay" class="tree-display">No hay árbol creado aún.</pre>
+        </div>
+
+        <div class="card">
+          <h3>Árbol binario de búsqueda (BST)</h3>
+          <pre id="bstDisplay" class="tree-display">
+No hay BST construido aún. Ingresa una lista de números y presiona "Construir BST".
+          </pre>
+        </div>
+
+        <div class="card">
+          <h3>Resultados & Mensajes</h3>
+          <div id="messages" class="messages"></div>
+          <div id="traversalResults" class="traversals"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Hecho con JS puro · Tema oscuro verde 💚</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
