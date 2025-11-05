@@ -241,8 +241,7 @@ class TreeMenu {
     5. Recorridos (Preorden, Inorden, Postorden)
     6. Altura del árbol
     7. Verificar si el árbol es binario
-    8. Cambiar entre árbol binario y general
-    9. Salir
+    8. Salir
     `);
   }
 
@@ -300,16 +299,10 @@ class TreeMenu {
           break;
 
         case '7':
-          console.log(`¿El árbol es binario? ${this.tree.isBinary() ? 'Sí' : 'No'}`);
+          console.log(`¿El árbol es binario? ${this.tree.isBinary() ? 'Sí, cada nodo tiene como máximo dos hijos.' : 'No, no se cumple con la condicion de árbol binario (cada nodo debe tener como máximo dos hijos).'}`);
           break;
 
         case '8':
-          const isBinaryStr = await this.askQuestion(rl, '¿Deseas cambiar a árbol binario? (sí/no): ');
-          const isBinary = isBinaryStr.toLowerCase() === 'sí';
-          this.tree.toggleBinaryTree(isBinary);
-          break;
-
-        case '9':
           exit = true;
           rl.close();
           break;
