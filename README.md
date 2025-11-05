@@ -83,7 +83,7 @@ Este proyecto implementa una estructura de datos de árbol con la capacidad de t
 4. **Ejecuta el archivo** principal con el siguiente comando:
 
    ```bash
-   node treeMenu.js
+   node main.js
    ```
 
 5. Verás el menú interactivo en la consola, donde puedes elegir opciones para crear el árbol, agregar nodos, hacer recorridos, y más.
