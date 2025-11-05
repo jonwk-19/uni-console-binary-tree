@@ -173,4 +173,4 @@ Estructura del árbol:
 ## 📄 Licencia
 
 Este código puede ser utilizado libremente con fines educativos y personales.
-Autor: *[Tu nombre aquí]*
+Autor: [Jonathan Domingo](https://github.com/jonwk-19)

@@ -43,7 +43,6 @@ class Tree {
 
   // Agregar nodo (en un árbol binario)
   addNode(data) {
-    // Si quieres trabajar con números de verdad:
     const value = Number(data);
 
     if (!this.root) {
@@ -88,12 +87,12 @@ class Tree {
       // Árbol binario: lo imprimimos "de lado" con ramas
       this._printBinary(node, '', true);
     } else {
-      // Árbol general: indentación simple como antes
+      // Árbol general: indentación simple
       this._printGeneral(node, '');
     }
   }
 
-  // Árbol general: igual que antes pero separado
+  // Árbol general
   _printGeneral(node, indent) {
     if (!node) return;
 
@@ -101,7 +100,7 @@ class Tree {
     node.children.forEach(child => this._printGeneral(child, indent + '  '));
   }
 
-  // Árbol binario "bonito" en consola (girado 90°)
+  // Árbol binario
   _printBinary(node, prefix, isLeft) {
     if (!node) return;
 
@@ -149,8 +148,6 @@ class Tree {
       console.log(node.data);
       this.inOrder(node.right);
     } else {
-      // Para árbol general, inorden no tiene mucho sentido clásico,
-      // pero podrías definir un orden si quisieras.
       console.log(node.data);
       node.children.forEach(child => this.inOrder(child));
     }
