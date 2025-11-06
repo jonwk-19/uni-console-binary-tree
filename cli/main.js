@@ -229,8 +229,40 @@ class Tree {
 class TreeMenu {
   constructor() {
     this.tree = new Tree();
-    this.run();
+    this.showIntro().then(() => {
+      this.run();
+    });
   }
+
+  async showIntro() {
+    const readline = require('node:readline');
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    console.log("Bienvenido al gestor de árboles.");
+    console.log("Antes de empezar, elija el tipo de árbol:");
+    console.log("1. Árbol General");
+    console.log("2. Árbol Binario de Búsqueda");
+
+    // Se asegura de que la opción sea válida antes de continuar
+    let option = await this.askQuestion(rl, 'Elige una opción (1 o 2): ');
+
+    while (option !== '1' && option !== '2') {
+      console.log("**Opción no válida. Selecciona una opción válida.**");
+      option = await this.askQuestion(rl, 'Elige una opción (1 o 2): ');
+    }
+
+    if (option === '1') {
+      this.tree.toggleBinaryTree(false);
+    } else if (option === '2') {
+      this.tree.toggleBinaryTree(true);
+    }
+
+    rl.close();
+  }
+
 
   showMenu() {
     console.log(`
@@ -256,7 +288,8 @@ class TreeMenu {
     while (!exit) {
       this.showMenu();
       const option = await this.askQuestion(rl, 'Elige una opción: ');
-
+      // Hacer un clear de la consola
+      console.clear();
       switch (option) {
         case '1':
           const rootData = await this.askQuestion(rl, 'Ingrese el valor de la raíz: ');
@@ -264,13 +297,22 @@ class TreeMenu {
           break;
 
         case '2':
+          if (this.tree.isBinarySearchTree) {
+            console.log('No se pueden agregar hijos en un árbol binario de búsqueda. Use la opción 3 para agregar nodos.');
+            break;
+          }
           const parentData = await this.askQuestion(rl, 'Ingrese el valor del nodo padre: ');
           const childData = await this.askQuestion(rl, 'Ingrese el valor del hijo: ');
           this.tree.addChild(Number(parentData), Number(childData));
           break;
 
         case '3':
-          const nodeData = await this.askQuestion(rl, 'Ingrese el valor del nodo a agregar (para árbol binario): ');
+          if (!this.tree.isBinarySearchTree && this.tree.root) {
+            console.log('Los árboles generales no permiten agregar nodos de esta manera.');
+            console.log('Utilice la opción 2 para agregar hijos a un nodo existente.');
+            break;
+          }
+          const nodeData = await this.askQuestion(rl, 'Ingrese el valor del nodo a agregar: ');
           this.tree.addNode(Number(nodeData));
           break;
 
