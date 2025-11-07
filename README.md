@@ -62,25 +62,25 @@ La interfaz web te permite gestionar el árbol de manera visual e interactiva de
 #### **Opción 1: Ejecutar en CLI (Línea de Comandos)**
 
 1. **Clona o descarga el proyecto**.
-
 2. Asegúrate de tener **Node.js** instalado. Si no lo tienes, puedes descargarlo desde [aquí](https://nodejs.org/).
-
-3. Navega a la carpeta donde descargaste el proyecto y abre la terminal.
-
-4. Ejecuta el archivo principal con:
+3. Navega a la carpeta donde descargaste el proyecto.
+4. Una vez dentro navega a la carpeta `/cli`, ahi encontraras el archivo `main.js`
+5. Abre la terminal y ejecuta el archivo principal con:
 
    ```bash
    node main.js
    ```
 
-5. Interactúa con el árbol mediante el menú en la consola.
+6. Interactúa con el árbol mediante el menú en la consola.
 
 #### **Opción 2: Ejecutar en Web (Interfaz Gráfica)**
 
 1. **Clona o descarga el proyecto**.
-2. Abre el archivo `index.html` en tu navegador favorito.
-3. Verás una interfaz de usuario interactiva donde podrás gestionar el árbol visualmente.
-4. Usa los botones y formularios para realizar las operaciones en el árbol (crear nodos, agregar hijos, realizar recorridos, etc.).
+2. Navega a la carpeta donde descargaste el proyecto.
+3. Una vez dentro navega a la carpeta `/web`, ahi encontraras el archivo `index.html`
+4. Abre el archivo `index.html` en tu navegador favorito.
+5. Verás una interfaz de usuario interactiva donde podrás gestionar el árbol visualmente.
+6. Usa los botones y formularios para realizar las operaciones en el árbol (crear nodos, agregar hijos, realizar recorridos, etc.).
 
 ---
 
