@@ -170,39 +170,31 @@ export class TreeUI {
         const raw = this.bstValuesInput.value || "";
         const cleaned = raw.trim();
         if (!cleaned) {
-          throw new Error("Ingresa al menos un número para construir el BST.");
+          throw new Error("Ingresa un número para insertar en el BST.");
         }
 
-        const parts = cleaned.split(/[,\s]+/).filter(Boolean);
-        const numbers = [];
-        const invalidTokens = [];
-
-        for (const token of parts) {
-          const num = Number(token);
-          if (Number.isNaN(num)) {
-            invalidTokens.push(token);
-          } else {
-            numbers.push(num);
-          }
+        const num = Number(cleaned);
+        if (Number.isNaN(num)) {
+          throw new Error(`"${cleaned}" no es un número válido.`);
         }
 
-        if (invalidTokens.length > 0) {
-          throw new Error(
-            `Estos valores no son números válidos: ${invalidTokens.join(", ")}.`
-          );
-        }
-
-        const steps = this.bst.buildFromArray(numbers);
+        const steps = [];
+        this.bst.insert(num, steps);
         this.refreshBSTDisplay();
 
         const bulletSteps = steps.map((s) => `• ${s}`).join("\n");
         this.showInfo(
-          `BST construido con los valores: ${numbers.join(", ")}.\n\nCómo se insertó (resumen rápido):\n${bulletSteps}`
+          `Se intentó insertar el valor ${num} en el BST.\n\nDetalle:\n${bulletSteps}`
         );
+
+        // limpiar y enfocar de nuevo el input
+        this.bstValuesInput.value = "";
+        this.bstValuesInput.focus();
       } catch (err) {
         this.showError(err.message);
       }
     });
+
 
     this.btnBSTPreorder.addEventListener("click", () => {
       const result = this.bst.preorder();

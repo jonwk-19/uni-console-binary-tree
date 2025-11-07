@@ -81,24 +81,49 @@ export class BinarySearchTree {
     return steps;
   }
 
-  toString() {
-    if (!this.root) return "BST vacío.";
+    toString() {
+    if (!this.root) {
+      return "BST vacío.\n(Ingresa un número y presiona \"Insertar en BST\")";
+    }
 
     const lines = [];
 
-    const buildLines = (node, prefix, isLeft) => {
+    /**
+     * Imprime el árbol de forma lateral:
+     *
+     * Ejemplo (aprox):
+     *        54
+     *     22
+     *   9
+     *     8
+     *
+     * Recorremos primero derecha, luego nodo, luego izquierda
+     * para que la parte "grande" quede arriba.
+     */
+    const printNode = (node, prefix = "", isLeft = true) => {
       if (!node) return;
-      const connector = prefix ? (isLeft ? "└─L: " : "└─R: ") : "";
+
+      // primero la derecha (se dibuja arriba)
+      if (node.right) {
+        const newPrefix = prefix + (isLeft ? "│   " : "    ");
+        printNode(node.right, newPrefix, false);
+      }
+
+      // el propio nodo
+      const connector = prefix ? (isLeft ? "└── " : "┌── ") : "";
       lines.push(prefix + connector + node.value);
 
-      const childPrefix = prefix + (prefix || connector ? "   " : "");
-      if (node.left) buildLines(node.left, childPrefix, true);
-      if (node.right) buildLines(node.right, childPrefix, false);
+      // luego la izquierda (se dibuja abajo)
+      if (node.left) {
+        const newPrefix = prefix + (isLeft ? "    " : "│   ");
+        printNode(node.left, newPrefix, true);
+      }
     };
 
-    buildLines(this.root, "", true);
+    printNode(this.root, "", true);
     return lines.join("\n");
   }
+
 
   preorder() {
     const result = [];
